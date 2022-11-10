@@ -22,13 +22,13 @@ rend = Renderer(screen)
 
 rend.setShaders(vertex_shader, fragment_shader)
 
-rend.target.z = -1
-face = Model("Miniature_cat_SF.obj", "Miniature1_cat.bmp")
+rend.target.z -= 10
+face = Model("indoor plant_02.obj", "indoor plant_2_COL.bmp")
 
-face.position.z -= 5
-face.scale.x = 2
-face.scale.y = 2
-face.scale.z = 2
+face.position.z -= 20
+face.scale.x = 1
+face.scale.y = 1
+face.scale.z = 1
 
 
 rend.scene.append( face )
