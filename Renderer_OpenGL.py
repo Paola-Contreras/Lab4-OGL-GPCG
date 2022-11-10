@@ -49,24 +49,29 @@ while isRunning:
             if event.key == pygame.K_ESCAPE:
                 isRunning = False
 
+            #Shaders
             elif event.key == pygame.K_z:
                 rend.filledMode()
             elif event.key == pygame.K_x:
                 rend.wireframeMode()
+            elif event.key == pygame.K_2:
+                rend.setShaders(vertex_shader, toon_shader)
 
+    # CAMARA 
+    #Zoom in & Zoom out
     if keys[K_q]:
         if rend.camDistance > 2:
             rend.camDistance -= 2 * deltaTime
     elif keys[K_e]:
         if rend.camDistance < 10:
             rend.camDistance += 2 * deltaTime
-
+    #Right & Left
     if keys[K_a]:
         rend.angle -= 30 * deltaTime
     elif keys[K_d]:
         rend.angle += 30 * deltaTime
 
-
+    #Up & Down
     if keys[K_w]:
         if rend.camPosition.y < 2:
             rend.camPosition.y += 5 * deltaTime
@@ -80,6 +85,7 @@ while isRunning:
     rend.camPosition.x = rend.target.x + sin(radians(rend.angle)) * rend.camDistance
     rend.camPosition.z = rend.target.z + cos(radians(rend.angle)) * rend.camDistance
     
+    #Light
     if keys[K_LEFT]:
         rend.pointLight.x -= 10 * deltaTime
     elif keys[K_RIGHT]:

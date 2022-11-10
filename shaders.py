@@ -46,3 +46,57 @@ void main()
     fragColor = texture(tex, UVs) * intensity;
 }
 '''
+
+toon_shader ='''
+#version 450 core
+
+out vec4 fragColor;
+
+in vec2 UVs;
+in vec3 norms;
+in vec3 pos;
+
+uniform vec3 pointLight;
+
+uniform sampler2D tex;
+
+void main()
+{
+    float intensity = dot(norms, normalize(pointLight - pos));
+    if (intensity < 0.2){
+        intensity = 0.1;
+    } else if (intensity < 0.5){
+        intensity = 0.4;
+    } else if (intensity < 0.7){
+        intensity = 0.6;
+    } else if (intensity < 0.9){
+        intensity = 0.8;
+    } else if (intensity < 0.94){
+        intensity = 0.9;
+    } else {
+        intensity = 1;
+    }
+    fragColor = texture(tex, UVs) * intensity;
+}
+'''
+
+_shader ='''
+#version 450 core
+
+out vec4 fragColor;
+
+in vec2 UVs;
+in vec3 norms;
+in vec3 pos;
+
+uniform vec3 pointLight;
+
+uniform sampler2D tex;
+
+void main()
+{
+    float intensity = dot(norms, normalize(pointLight - pos));
+
+    fragColor = texture(tex, UVs) * intensity;
+}
+'''
