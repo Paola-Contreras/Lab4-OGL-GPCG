@@ -22,9 +22,8 @@ rend = Renderer(screen)
 
 rend.setShaders(vertex_shader, fragment_shader)
 
-rend.target.z = -5
-
-face = Model("model.obj", "model.bmp")
+rend.target.z = -1
+face = Model("Miniature_cat_SF.obj", "Miniature1_cat.bmp")
 
 face.position.z -= 5
 face.scale.x = 2
@@ -50,12 +49,19 @@ while isRunning:
                 isRunning = False
 
             #Shaders
-            elif event.key == pygame.K_z:
-                rend.filledMode()
-            elif event.key == pygame.K_x:
-                rend.wireframeMode()
+            elif event.key == pygame.K_1:
+                rend.setShaders(vertex_shader, fragment_shader)
             elif event.key == pygame.K_2:
                 rend.setShaders(vertex_shader, toon_shader)
+            elif event.key == pygame.K_3:
+                rend.setShaders(deform_shader, fragment_shader)
+            elif event.key == pygame.K_4:
+                rend.setShaders(vertex_shader, rainbow_shader)
+            elif event.key == pygame.K_5:
+                rend.setShaders(sphere_shader, fragment_shader)
+            elif event.key == pygame.K_6:
+               rend.wireframeMode()
+
 
     # CAMARA 
     #Zoom in & Zoom out
